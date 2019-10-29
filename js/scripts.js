@@ -6,9 +6,10 @@ $(document).ready(function(){
     var goal = parseInt($('#goal').val());
     var by = parseInt($('#by').val());
     var temp = "";
-    if (by === 0 || goal === 0){
-      alert("Dont enter 0");
-    } else if (by > 0 && goal > 0){
+  if (Math.abs(by) > Math.abs(goal)) {
+    temp = "'Count By' cannot be greater than 'Count To'"
+  
+  }else if (by > 0 && goal > 0){
       for (var i = by; i <= goal; i += by) {
 
         temp += i + ' ';
@@ -20,8 +21,8 @@ $(document).ready(function(){
         temp += i + ' ';
 
       }
-    }else {
-
+    } else {
+      temp = "Please use matching signs and no 0"
     }
     $('#output').text('Output: ' + temp);
   });
